@@ -1,14 +1,12 @@
-import styled, {createGlobalStyle, css} from "styled-components";
+import styled, {createGlobalStyle} from "styled-components";
 import {useEffect, useState} from "react";
 import _ from "lodash";
-import {MdAddCircleOutline} from "@react-icons/all-files/md/MdAddCircleOutline";
-import {TiDeleteOutline} from "@react-icons/all-files/ti/TiDeleteOutline";
-import moment from "moment";
 import TodoTitle from "~/components/TodoTitle";
-import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
-import {buttonState, submitButtonState, todoListState} from "~/recoils/button/buttonState";
+import {useRecoilState, useRecoilValue} from "recoil";
 import TodoInputField from "~/components/TodoInputField";
 import {RiDeleteBin6Fill} from "@react-icons/all-files/ri/RiDeleteBin6Fill";
+import {Link} from "@remix-run/react";
+import {buttonState, submitButtonState, todoListSelector, todoListState} from "~/recoils/todo/state";
 
 export interface ItemProps {
     id: number,
@@ -19,70 +17,101 @@ export interface ItemProps {
 
 export default function Index() {
 
-    // id값으로 라우팅되면 해당 페이지의 상세?
-    const [index, setIndex] = useState<number>(0);
+    const [index, setIndex] = useState<number>(1);
     const show = useRecoilValue(buttonState);
     const [addTodo, setAddTodo] = useRecoilState(submitButtonState);
-    const setTodoList = useSetRecoilState(todoListState);
-
+    const [todoList, setTodoList] = useRecoilState(todoListState);
+    const [displayTodoList, setDisplayTodoList] = useState<Array<ItemProps>>(todoList);
+    const finishedList = useRecoilValue(todoListSelector);
     const [todoItem, setTodoItem] = useState<ItemProps>({
         id: index,
         text: "",
         checked: false,
     });
 
-    const [list, setList] = useState<Array<ItemProps>>([]);
-
     const onChangeText = (item: ItemProps) => {
         setTodoItem(item);
     };
 
     const onCheckedTodo = (e: any) => {
-        setList(
-            list.map((item) =>
+        setTodoList(
+            todoList.map((item) =>
                 _.isEqual(_.toString(item.id), e.target.value) ? {...item, checked: !item.checked} : item
-            ))
+            ));
     };
 
     const onDeleteTodo = (e: any) => {
         if (window.confirm('삭제 하시겠습니까?')) {
-            setList(list.filter((item) => !_.isEqual(_.toString(item.id), e.target.value)));
+            setTodoList(todoList.filter((item) => !_.isEqual(_.toString(item.id), e.target.value)));
         } else {
             return false;
         }
     };
 
+    const onClickTotalList = () => {
+        setDisplayTodoList(todoList);
+    };
+
+    const onClickFinishList = () => {
+        finishedList.length > 0 ? setDisplayTodoList(finishedList) : setDisplayTodoList(todoList);
+    };
+
     useEffect(() => {
         if (addTodo && !_.isEqual(todoItem.text, "")) {
-            setList([...list, todoItem]);
+            setTodoList([...todoList, todoItem]);
             setIndex((prev: number) => prev + 1);
             setAddTodo(false);
         }
         setAddTodo(false);
     }, [addTodo]);
 
-    console.log(list);
+    useEffect(() => {
+        setDisplayTodoList(todoList);
+    }, [todoList]);
+
+    
     return (
         <>
             <GlobalStyle/>
             <Wrapper>
                 <TodoContainer>
-                    <TodoTitle count={list.length}/>
+                    <TodoTitle count={todoList.length}/>
                     <TodoInputField index={index} onChange={onChangeText}/>
                     {
-                        list.map((item, index) => (
-                            <ToDoItem key={index}>
-                                <input type="checkbox" value={item.id} defaultChecked={item.checked}
-                                       onChange={onCheckedTodo}/>
-                                <div className={item.checked ? 'checked' : 'unchecked'}>{item.text}</div>
-                                <label>
-                                    <RiDeleteBin6Fill/>
-                                    <input type="button" value={item.id} id={`deleteBtn`} hidden={true}
-                                           onClick={onDeleteTodo}/>
-                                </label>
-
-                            </ToDoItem>
-                        ))
+                        displayTodoList.length > 0 ?
+                            <>
+                                {
+                                    displayTodoList.map((item, index) => (
+                                        <ToDoItem key={item.id}>
+                                            <input type="checkbox" value={item.id} defaultChecked={item.checked}
+                                                   onChange={onCheckedTodo}/>
+                                            <div className={item.checked ? 'checked' : 'unchecked'}>
+                                                <Link to={`/todo/${item.id}`} state={{data: item.id}}
+                                                      style={{textDecoration: "none", color: "#000000"}}>
+                                                    {item.text}
+                                                </Link>
+                                            </div>
+                                            <label>
+                                                <RiDeleteBin6Fill/>
+                                                <input type="button" value={item.id} id={`deleteBtn`} hidden={true}
+                                                       onClick={onDeleteTodo}/>
+                                            </label>
+                                        </ToDoItem>
+                                    ))
+                                }
+                                <ButtonContainer>
+                                    <Buttons>
+                                        <div>
+                                            <input type="button" onClick={onClickTotalList} value="전체목록"/>
+                                        </div>
+                                        <div>
+                                            <input type="button" onClick={onClickFinishList} value="완료목록"/>
+                                        </div>
+                                    </Buttons>
+                                </ButtonContainer>
+                            </>
+                            :
+                            <EmptyItem>내용이 없습니다.</EmptyItem>
                     }
                 </TodoContainer>
             </Wrapper>
@@ -110,11 +139,11 @@ const TodoContainer = styled.div`
   border: 1px solid #DCE2F0;
   border-radius: 8px;
   box-shadow: 4px 3px 3px 3px;
-  width: 50%;
-  height: auto;
+  width: 40%;
+  height: 500px;
   text-align: center;
   padding: 10px;
-  overflow:auto;
+  overflow: auto;
 `;
 
 
@@ -135,5 +164,29 @@ const ToDoItem = styled.div`
     &.unchecked {
       color: #000000;
     }
+  }
+`;
+
+const EmptyItem = styled.div`
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 30px;
+`;
+
+const Buttons = styled.div`
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+
+  & > div > input[type=button]:nth-child(1) {
+    border: none;
+    background: none;
   }
 `;

@@ -1,9 +1,13 @@
 import {useRecoilState, useRecoilValue} from "recoil";
-import {buttonState, submitButtonState} from "~/recoils/button/buttonState";
 import {ItemProps} from "~/routes";
 import {useEffect, useState} from "react";
 import styled, {css} from "styled-components";
 import {TiDeleteOutline} from "@react-icons/all-files/ti/TiDeleteOutline";
+import {buttonState, submitButtonState} from "~/recoils/todo/state";
+import {
+    KeyboardEvent
+} from "../../../../../../../../Applications/IntelliJ IDEA.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/react";
+import _ from "lodash";
 
 interface Props {
     index: number,
@@ -25,7 +29,10 @@ const TodoInputField = ({onChange, index}: Props) => {
         setTodoItem({...todoItem, id: index, text: e.target.value});
     };
 
-    const onCancelButtonClick = () => setShow(!show);
+    const onCancelButtonClick = () => {
+        setShow(!show);
+        setTodoItem({...todoItem, text: ""});
+    };
 
     useEffect(() => {
         onChange(todoItem);

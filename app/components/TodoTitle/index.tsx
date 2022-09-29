@@ -2,8 +2,8 @@ import moment from "moment/moment";
 import styled from "styled-components";
 import {MdAddCircleOutline} from "@react-icons/all-files/md/MdAddCircleOutline";
 import {useRecoilState, useSetRecoilState} from "recoil";
-import {buttonState, submitButtonState} from "~/recoils/button/buttonState";
 import {BsCheckCircle} from "@react-icons/all-files/bs/BsCheckCircle";
+import {buttonState, submitButtonState} from "~/recoils/todo/state";
 
 interface Props {
     count: number,
