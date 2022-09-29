@@ -3,10 +3,10 @@ import _ from "lodash";
 import styled, {createGlobalStyle} from "styled-components";
 import {RiDeleteBin6Fill} from "@react-icons/all-files/ri/RiDeleteBin6Fill";
 import {useRecoilState} from "recoil";
-import {ItemProps, todoListState} from "~/recoils/todo/state";
 import {
     useEffect, useState
 } from "../../../../../../../../Applications/IntelliJ IDEA.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/react";
+import { todoListState } from "~/recoils/todo/todoState";
 
 
 export const TodoListDetail = () => {
@@ -26,7 +26,7 @@ export const TodoListDetail = () => {
     const onDeleteTodo = (e: any) => {
         if (window.confirm('삭제 하시겠습니까?')) {
             setTodoList(todoList.filter((item) => !_.isEqual(_.toString(item.id), e.target.value)));
-            navi('/');
+            navi('/todo');
         } else {
             return false;
         }
@@ -60,7 +60,7 @@ export const TodoListDetail = () => {
                                 </label>
                             </ToDoItem>
                             <div>
-                                <Link to={`/`}>홈으로</Link>
+                                <Link to={`/todo`}>홈으로</Link>
                             </div>
                         </TodoContainer>
                     ))

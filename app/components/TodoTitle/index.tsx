@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {MdAddCircleOutline} from "@react-icons/all-files/md/MdAddCircleOutline";
 import {useRecoilState, useSetRecoilState} from "recoil";
 import {BsCheckCircle} from "@react-icons/all-files/bs/BsCheckCircle";
-import {buttonState, submitButtonState} from "~/recoils/todo/state";
+import {buttonState, submitButtonState } from "~/recoils/todo/todoState";
 
 interface Props {
     count: number,

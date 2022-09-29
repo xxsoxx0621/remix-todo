@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="713b8946-b1ff-4956-8e44-75396ec2f43d" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/TodoInputField/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/TodoInputField/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/TodoList/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/TodoList/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/TodoTitle/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/TodoTitle/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/todo/$id.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/todo/$id.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/todo/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/todo/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -50,7 +58,7 @@
     "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "project.scopes",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "show.migrate.to.gradle.popup": "false",
     "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external"
   }
@@ -82,6 +90,7 @@
       <workItem from="1663468719648" duration="130000" />
       <workItem from="1663468864312" duration="48000" />
       <workItem from="1663468958475" duration="57000" />
+      <workItem from="1664451276647" duration="8321000" />
     </task>
     <servers />
   </component>
@@ -98,5 +107,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

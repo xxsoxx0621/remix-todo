@@ -1,13 +1,13 @@
-import {useRecoilState, useRecoilValue} from "recoil";
-import {ItemProps} from "~/routes";
 import {useEffect, useState} from "react";
 import styled, {css} from "styled-components";
 import {TiDeleteOutline} from "@react-icons/all-files/ti/TiDeleteOutline";
-import {buttonState, submitButtonState} from "~/recoils/todo/state";
 import {
     KeyboardEvent
 } from "../../../../../../../../Applications/IntelliJ IDEA.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/react";
 import _ from "lodash";
+import {buttonState, ItemProps, submitButtonState} from "~/recoils/todo/todoState";
+import * as events from "events";
+import {useRecoilState, useRecoilValue} from "recoil";
 
 interface Props {
     index: number,
@@ -17,7 +17,7 @@ interface Props {
 
 const TodoInputField = ({onChange, index}: Props) => {
     const [show, setShow] = useRecoilState(buttonState);
-    const addTodo = useRecoilValue(submitButtonState);
+    const [addTodo, setAddTodo] = useRecoilState(submitButtonState);
 
     const [todoItem, setTodoItem] = useState<ItemProps>({
         id: index,
@@ -34,8 +34,16 @@ const TodoInputField = ({onChange, index}: Props) => {
         setTodoItem({...todoItem, text: ""});
     };
 
+    const onHandleKeyEvent = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            onChange(todoItem);
+            setAddTodo(true);
+        }
+    };
+
     useEffect(() => {
         onChange(todoItem);
+        setAddTodo(false);
     }, [todoItem]);
 
     useEffect(() => {
@@ -44,8 +52,8 @@ const TodoInputField = ({onChange, index}: Props) => {
 
     return (
         <Wrapper hidden={!show}>
-            <InputField type="text" value={todoItem.text} placeholder="할 일을 입력해주세요."
-                        onChange={onChangeText}/>
+            <InputField type="text" name="text" value={todoItem.text} placeholder="할 일을 입력해주세요."
+                        onChange={onChangeText} onKeyPress={onHandleKeyEvent}/>
             <label htmlFor={'cancelBtn'} onClick={onCancelButtonClick}>
                 <TiDeleteOutline/>
             </label>
