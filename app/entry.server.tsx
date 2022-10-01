@@ -14,55 +14,55 @@ export default function handleRequest(
     remixContext: EntryContext
 ) {
 
-    const sheet = new ServerStyleSheet();
-
-    let markup = renderToString(
-        sheet.collectStyles(
-            <RemixServer context={remixContext} url={request.url}/>
-        )
-    );
-
-    const styles = sheet.getStyleTags();
-    markup = markup.replace("__STYLES__", styles);
-
-    responseHeaders.set("Content-Type", "text/html");
-
-    return new Response("<!DOCTYPE html>" + markup, {
-        status: responseStatusCode,
-        headers: responseHeaders,
-    });
-
-    // return new Promise((resolve, reject) => {
-    //     let didError = false;
+    // const sheet = new ServerStyleSheet();
     //
-    //     const {pipe, abort} = renderToPipeableStream(
-    //         <RemixServer context={remixContext} url={request.url}/>,
-    //         {
-    //             onShellReady: () => {
-    //                 const body = new PassThrough();
+    // let markup = renderToString(
+    //     sheet.collectStyles(
+    //         <RemixServer context={remixContext} url={request.url}/>
+    //     )
+    // );
     //
-    //                 responseHeaders.set("Content-Type", "text/html");
+    // const styles = sheet.getStyleTags();
+    // markup = markup.replace("__STYLES__", styles);
     //
-    //                 resolve(
-    //                     new Response(body, {
-    //                         headers: responseHeaders,
-    //                         status: didError ? 500 : responseStatusCode,
-    //                     })
-    //                 );
+    // responseHeaders.set("Content-Type", "text/html");
     //
-    //                 pipe(body);
-    //             },
-    //             onShellError: (err) => {
-    //                 reject(err);
-    //             },
-    //             onError: (error) => {
-    //                 didError = true;
-    //
-    //                 console.error(error);
-    //             },
-    //         }
-    //     );
-    //
-    //     setTimeout(abort, ABORT_DELAY);
+    // return new Response("<!DOCTYPE html>" + markup, {
+    //     status: responseStatusCode,
+    //     headers: responseHeaders,
     // });
+
+    return new Promise((resolve, reject) => {
+        let didError = false;
+
+        const {pipe, abort} = renderToPipeableStream(
+            <RemixServer context={remixContext} url={request.url}/>,
+            {
+                onShellReady: () => {
+                    const body = new PassThrough();
+
+                    responseHeaders.set("Content-Type", "text/html");
+
+                    resolve(
+                        new Response(body, {
+                            headers: responseHeaders,
+                            status: didError ? 500 : responseStatusCode,
+                        })
+                    );
+
+                    pipe(body);
+                },
+                onShellError: (err) => {
+                    reject(err);
+                },
+                onError: (error) => {
+                    didError = true;
+
+                    console.error(error);
+                },
+            }
+        );
+
+        setTimeout(abort, ABORT_DELAY);
+    });
 }

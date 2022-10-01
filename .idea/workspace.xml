@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="713b8946-b1ff-4956-8e44-75396ec2f43d" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remix.env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/remix.env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/entry.server.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/entry.server.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +84,7 @@
       <workItem from="1663468864312" duration="48000" />
       <workItem from="1663468958475" duration="57000" />
       <workItem from="1664451276647" duration="8414000" />
-      <workItem from="1664605835834" duration="113000" />
+      <workItem from="1664605835834" duration="978000" />
     </task>
     <servers />
   </component>
