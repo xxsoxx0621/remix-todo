@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="713b8946-b1ff-4956-8e44-75396ec2f43d" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/TodoInputField/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/TodoInputField/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/TodoList/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/TodoList/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/TodoTitle/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/TodoTitle/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/todo/$id.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/todo/$id.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/todo/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/todo/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remix.env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/remix.env.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,27 +35,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Project.color": "15281b",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/Users/baesohyeon/dev/remix/todo",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "/Users/baesohyeon/dev/remix/todo/node_modules/eslint",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "show.migrate.to.gradle.popup": "false",
-    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Project.color&quot;: &quot;15281b&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/baesohyeon/dev/remix/todo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;/Users/baesohyeon/dev/remix/todo/node_modules/eslint&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="todo" />
@@ -90,7 +83,8 @@
       <workItem from="1663468719648" duration="130000" />
       <workItem from="1663468864312" duration="48000" />
       <workItem from="1663468958475" duration="57000" />
-      <workItem from="1664451276647" duration="8321000" />
+      <workItem from="1664451276647" duration="8414000" />
+      <workItem from="1664605835834" duration="113000" />
     </task>
     <servers />
   </component>
